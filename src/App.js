@@ -65,7 +65,7 @@ function App() {
             <label className="text" for="people">
               Number of People
             </label>
-            <div className="input-wrapper d-flex ">
+            <div className="input-wrapper input-wrapper--bottom d-flex ">
               <img src={icon_person} alt="" aria-hidden="true" />
               <input
                 className="text--extra-large text--cyan"
