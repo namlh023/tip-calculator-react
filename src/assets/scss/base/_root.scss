@@ -8,4 +8,35 @@
   --clr-white: hsl(0, 0%, 100%);
 
   --ff-primary: "Space Mono", monospace;
+
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-700: 700;
+
+  --header-width: 5.4375rem;
+  --header-padding: 2.5rem;
+  --main-padding: 2rem;
+  --input-padding: 0.5rem;
+  --input-margin: 2rem;
+
+  --fs-sm: 0.8125rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-xxl: 2rem;
+
+  --lh-primary: 1.5em;
+
+  --br-primary: 0.4rem;
+
+  --main-width: 23.4375rem;
+
+  @media (min-width: 90em) {
+    --header-padding: 5rem;
+    --input-margin: 2.5rem;
+
+    --fs-xxl: 3rem;
+
+    --main-width: 57.5rem;
+  }
 }
