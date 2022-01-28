@@ -194,10 +194,39 @@ fieldset {
 
   input[type="reset"] {
     width: 100%;
-    padding: var(--input-padding);
+    padding: 0.5rem;
 
     background-color: var(--clr-cyan);
     border: 0;
     border-radius: var(--br-primary);
+  }
+}
+
+@media (min-width: 90em) {
+  .form {
+    display: flex;
+    gap: 3rem;
+
+    .inputs-wrapper,
+    .output-wrapper {
+      width: 50%;
+    }
+  }
+
+  .input-wrapper {
+    margin-bottom: 0;
+  }
+
+  .output-wrapper {
+    input[type="reset"] {
+      padding: 1rem;
+    }
+  }
+
+  fieldset {
+    input[type="button"],
+    input[type="number"] {
+      width: 30%;
+    }
   }
 }

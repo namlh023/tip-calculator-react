@@ -12,65 +12,67 @@ function App() {
 
       <main className="main">
         <form className="form">
-          <label className="text" for="bill">
-            Bill
-          </label>
-          <div className="input-wrapper d-flex">
-            <img src={icon_dollar} alt="" aria-hidden="true" />
-            <input
-              className="text--extra-large text--cyan"
-              type="number"
-              id="bill"
-              name="bill"
-            />
-          </div>
-          <fieldset>
-            <legend className="text">Select Tips %:</legend>
-            <input
-              className="text text--extra-large text--white"
-              type="button"
-              value="5%"
-            />
-            <input
-              className="text text--extra-large text--white"
-              type="button"
-              value="10%"
-            />
-            <input
-              className="text text--extra-large text--white"
-              type="button"
-              value="15%"
-            />
-            <input
-              className="text text--extra-large text--white"
-              type="button"
-              value="25%"
-            />
-            <input
-              className="text text--extra-large text--white"
-              type="button"
-              value="50%"
-            />
-            <input
-              className="text text--extra-large text--white input-custom"
-              type="button"
-              value="Custom"
-            />
-            <input
-              type="number"
-              className="text text--cyan text--extra-large"
-            />
-          </fieldset>
-          <label className="text" for="people">
-            Number of People
-          </label>
-          <div className="input-wrapper d-flex ">
-            <img src={icon_person} alt="" aria-hidden="true" />
-            <input
-              className="text--extra-large text--cyan"
-              type="number"
-              id="people"
-            />
+          <div className="inputs-wrapper">
+            <label className="text" for="bill">
+              Bill
+            </label>
+            <div className="input-wrapper d-flex">
+              <img src={icon_dollar} alt="" aria-hidden="true" />
+              <input
+                className="text--extra-large text--cyan"
+                type="number"
+                id="bill"
+                name="bill"
+              />
+            </div>
+            <fieldset>
+              <legend className="text">Select Tips %:</legend>
+              <input
+                className="text text--extra-large text--white"
+                type="button"
+                value="5%"
+              />
+              <input
+                className="text text--extra-large text--white"
+                type="button"
+                value="10%"
+              />
+              <input
+                className="text text--extra-large text--white"
+                type="button"
+                value="15%"
+              />
+              <input
+                className="text text--extra-large text--white"
+                type="button"
+                value="25%"
+              />
+              <input
+                className="text text--extra-large text--white"
+                type="button"
+                value="50%"
+              />
+              <input
+                className="text text--extra-large text--white input-custom"
+                type="button"
+                value="Custom"
+              />
+              <input
+                type="number"
+                className="text text--cyan text--extra-large"
+              />
+            </fieldset>
+            <label className="text" for="people">
+              Number of People
+            </label>
+            <div className="input-wrapper d-flex ">
+              <img src={icon_person} alt="" aria-hidden="true" />
+              <input
+                className="text--extra-large text--cyan"
+                type="number"
+                id="people"
+              />
+            </div>
           </div>
           <div className="output-wrapper">
             <lable className="text text--white" for="tip-output">
