@@ -8,10 +8,14 @@ function App() {
   // States
   const [isOnFocus, setIsOnFocus] = useState(false);
   const [tipActive, setTipActive] = useState(0);
-  const [tipValue, setTipValue] = useState(0);
+  const [tipValue, setTipValue] = useState();
+  const [billValue, setBillValue] = useState();
+  const [peopleValue, setPeopleValue] = useState();
 
   // Refs
   const customTipRef = useRef();
+  const tipAmountRef = useRef();
+  const totalAmountRef = useRef();
 
   // Effects
   useEffect(() => {
@@ -28,7 +32,13 @@ function App() {
       </header>
 
       <main className="main">
-        <form className="form">
+        <form
+          className="form"
+          onInput={() => {
+            calcAmount(tipAmountRef.current, tipValue, peopleValue);
+            calcAmount(totalAmountRef.current, billValue, peopleValue);
+          }}
+        >
           <div className="inputs-wrapper">
             <label className="text" for="bill">
               Bill
@@ -41,6 +51,8 @@ function App() {
                 id="bill"
                 name="bill"
                 placeholder="0"
+                value={billValue}
+                onChange={(e) => controllInput(setBillValue, e.target.value)}
               />
             </div>
             <fieldset>
@@ -54,7 +66,7 @@ function App() {
                     type="button"
                     value={`${tip}%`}
                     onClick={() => {
-                      setStateTipValue(tip);
+                      controllInput(setTipValue, tip);
                       setTipActive(tip);
                     }}
                   />
@@ -72,11 +84,14 @@ function App() {
               />
               <input
                 type="number"
+                min="0"
+                max="100"
+                ref={customTipRef}
+                value={tipValue}
+                onChange={(e) => controllInput(setTipValue, e.target.value)}
                 className={`text text--cyan text--extra-large ${
                   isOnFocus ? "d-inline-block" : "d-none"
                 }`}
-                autofocus="true"
-                ref={customTipRef}
               />
             </fieldset>
             <label className="text" for="people">
@@ -89,6 +104,8 @@ function App() {
                 type="number"
                 id="people"
                 placeholder="0"
+                value={peopleValue}
+                onChange={(e) => controllInput(setPeopleValue, e.target.value)}
               />
             </div>
           </div>
@@ -101,8 +118,9 @@ function App() {
               id="tip-output"
               name="tip-output"
               for="bill people"
+              ref={tipAmountRef}
             >
-              $4.2
+              $0
             </output>
             <lable className="text text--white" for="total-output">
               Total Amount <br />{" "}
@@ -113,8 +131,9 @@ function App() {
               id="total-output"
               name="total-output"
               for="bill people"
+              ref={totalAmountRef}
             >
-              $4.2
+              $0
             </output>
             <input
               className="text--cyan text--large"
@@ -132,8 +151,20 @@ function App() {
     setIsOnFocus(isOnFocus);
   }
 
-  function setStateTipValue(tip) {
-    setTipValue(tip);
+  function controllInput(setState, value) {
+    setState(value);
+  }
+
+  function isDefined(value) {
+    return value ? true : false;
+  }
+
+  function calcAmount(target, amount, person) {
+    if (isDefined(amount) && isDefined(person)) {
+      target.value = amount / person;
+    } else {
+      target.value = "$" + 0;
+    }
   }
 }
 
