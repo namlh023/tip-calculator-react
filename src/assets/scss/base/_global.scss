@@ -36,6 +36,11 @@ fieldset {
     COMMON
 */
 
+.tip-active {
+  background-color: var(--clr-cyan) !important;
+  color: black !important;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -52,6 +57,14 @@ input[type="number"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-inline-block {
+  display: inline-block;
 }
 
 .text {
@@ -147,8 +160,6 @@ fieldset {
   }
 
   input[type="number"] {
-    display: none;
-
     background-color: var(--clr-cyan-6);
     border: 0;
     border-radius: var(--br-primary);
@@ -193,6 +204,8 @@ fieldset {
   }
 
   input[type="reset"] {
+    cursor: pointer;
+
     width: 100%;
     padding: 0.5rem;
 

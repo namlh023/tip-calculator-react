@@ -1,9 +1,26 @@
+import React, { useState, useRef, useEffect } from "react";
 import "./assets/scss/main.scss";
 import logo from "./assets/images/logo.svg";
 import icon_dollar from "./assets/images/icon-dollar.svg";
 import icon_person from "./assets/images/icon-person.svg";
 
 function App() {
+  // States
+  const [isOnFocus, setIsOnFocus] = useState(false);
+  const [tipActive, setTipActive] = useState(0);
+  const [tipValue, setTipValue] = useState(0);
+
+  // Refs
+  const customTipRef = useRef();
+
+  // Effects
+  useEffect(() => {
+    customTipRef.current.focus();
+  }, [isOnFocus]);
+
+  // Variables
+  const tips = [5, 10, 15, 25, 50];
+
   return (
     <div className="container">
       <header className="header">
@@ -23,43 +40,43 @@ function App() {
                 type="number"
                 id="bill"
                 name="bill"
+                placeholder="0"
               />
             </div>
             <fieldset>
               <legend className="text">Select Tips %:</legend>
+              {tips.map((tip) => {
+                return (
+                  <input
+                    className={`text text--extra-large text--white ${
+                      tipActive === tip ? "tip-active" : null
+                    }`}
+                    type="button"
+                    value={`${tip}%`}
+                    onClick={() => {
+                      setStateTipValue(tip);
+                      setTipActive(tip);
+                    }}
+                  />
+                );
+              })}
               <input
-                className="text text--extra-large text--white"
-                type="button"
-                value="5%"
-              />
-              <input
-                className="text text--extra-large text--white"
-                type="button"
-                value="10%"
-              />
-              <input
-                className="text text--extra-large text--white"
-                type="button"
-                value="15%"
-              />
-              <input
-                className="text text--extra-large text--white"
-                type="button"
-                value="25%"
-              />
-              <input
-                className="text text--extra-large text--white"
-                type="button"
-                value="50%"
-              />
-              <input
-                className="text text--extra-large text--white input-custom"
+                className={`text text--extra-large text--white input-custom ${
+                  isOnFocus ? "d-none" : ""
+                }`}
                 type="button"
                 value="Custom"
+                onClick={() => {
+                  setStateIsOnFocus(true);
+                }}
               />
               <input
                 type="number"
-                className="text text--cyan text--extra-large"
+                className={`text text--cyan text--extra-large ${
+                  isOnFocus ? "d-inline-block" : "d-none"
+                }`}
+                autofocus="true"
+                ref={customTipRef}
               />
             </fieldset>
             <label className="text" for="people">
@@ -71,6 +88,7 @@ function App() {
                 className="text--extra-large text--cyan"
                 type="number"
                 id="people"
+                placeholder="0"
               />
             </div>
           </div>
@@ -108,6 +126,15 @@ function App() {
       </main>
     </div>
   );
+
+  // Functions
+  function setStateIsOnFocus(isOnFocus = true) {
+    setIsOnFocus(isOnFocus);
+  }
+
+  function setStateTipValue(tip) {
+    setTipValue(tip);
+  }
 }
 
 export default App;
