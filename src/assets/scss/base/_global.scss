@@ -159,7 +159,7 @@ fieldset {
     color: var(--clr-cyan-3);
   }
 
-  input[type="number"] {
+  .input-custom-tip {
     background-color: var(--clr-cyan-6);
     border: 0;
     border-radius: var(--br-primary);
@@ -238,7 +238,7 @@ fieldset {
 
   fieldset {
     input[type="button"],
-    input[type="number"] {
+    .input-custom-tip {
       width: 30%;
     }
   }
