@@ -19,7 +19,7 @@ function App() {
   // useCallback
   const calcAmount = useCallback((target, amount, person) => {
     if (isDefined(Number(amount)) && isDefined(Number(person))) {
-      target.value = "$" + (Number(amount) / Number(person)).toFixed(2);
+      target.value = "$" + (Number(amount) / Number(person)).toFixed(1);
     } else {
       target.value = "$" + 0;
     }
@@ -31,9 +31,9 @@ function App() {
   }, [isOnFocus]);
 
   useEffect(() => {
-    let tipPercent = Number(tipValue) / 100;
+    let tipPercent = (Number(tipValue) / 100) * billValue;
     calcAmount(tipAmountRef.current, tipPercent, peopleValue);
-  }, [calcAmount, tipValue, peopleValue]);
+  }, [calcAmount, tipValue, peopleValue, billValue]);
 
   useEffect(() => {
     calcAmount(totalAmountRef.current, billValue, peopleValue);
@@ -79,7 +79,9 @@ function App() {
   return (
     <div className="container">
       <header className="header">
-        <img src={logo} alt="SPLITTER calculator" />
+        <h1>
+          <img src={logo} alt="SPLITTER calculator" />
+        </h1>
       </header>
 
       <main className="main">
@@ -165,9 +167,9 @@ function App() {
             </div>
           </div>
           <div className="output-wrapper">
-            <lable className="text text--white" htmlFor="tip-output">
+            <label className="text text--white" htmlFor="tip-output">
               Tip Amount <br /> <small className="text--small">/ person</small>
-            </lable>
+            </label>
             <output
               className="text--xxl text--cyan-1"
               id="tip-output"
@@ -177,10 +179,10 @@ function App() {
             >
               $0
             </output>
-            <lable className="text text--white" htmlFor="total-output">
+            <label className="text text--white" htmlFor="total-output">
               Total Amount <br />{" "}
               <small className="text--small">/ person</small>
-            </lable>
+            </label>
             <output
               className="text--xxl text--cyan-1"
               id="total-output"
