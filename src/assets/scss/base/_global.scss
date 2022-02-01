@@ -103,6 +103,11 @@ input[type="number"] {
     font-size: var(--fs-xxl);
     font-weight: var(--fw-700);
   }
+
+  &--error {
+    color: var(--clr-red);
+    padding-bottom: 0.375rem;
+  }
 }
 
 .input-wrapper {

@@ -72,15 +72,9 @@ function App() {
     }
   }
 
-  // function getNumbericOnly(value, callbackValue) {
-  //   const re = /^\d*(\.\d+)?$/;
-  //   return String(value).match(re)[0] ? value : callbackValue;
-  // }
-
-  // function getPositiveIntegerOnly(value, callbackValue) {
-  //   const re = "^[0-9]*$";
-  //   return String(value).match(re)[0] ? value : callbackValue;
-  // }
+  function isZero(value) {
+    return value !== "" && Number(value) === 0;
+  }
 
   return (
     <div className="container">
@@ -145,9 +139,18 @@ function App() {
                 }`}
               />
             </fieldset>
-            <label className="text" htmlFor="people">
-              Number of People
-            </label>
+            <div className="d-flex">
+              <label className="text" htmlFor="people">
+                Number of People
+              </label>
+              <small
+                className={`text text--error ${
+                  isZero(peopleValue) ? "d-block" : "d-none"
+                }`}
+              >
+                Can't be zero
+              </small>
+            </div>
             <div className="input-wrapper input-wrapper--bottom d-flex ">
               <img src={icon_person} alt="" aria-hidden="true" />
               <input
